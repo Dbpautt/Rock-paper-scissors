@@ -40,8 +40,14 @@ PC beats player PC 3/3 or 2/3
 ## Backlog
 
 Make it  Rock Paper Scissors _Lizard🦎 Spock 🖖_
+
+
 Create a page to select new player after game over wihtout the need to refresh
+
+
 Effects
+
+
 Music
 
 
@@ -62,14 +68,17 @@ Music
 ## Data structure
 Classes and methods definition.
 
-```javascript
 Main.js
+
+```javascript
+
   buildDom() {};
   main;
     buildSplash;
     addEventListenerHowTo;
     buildHowTo;
     addEventListenerSplash;
+    startGame(){};
     destroyHowTo;
     destroySplash;
     
@@ -77,15 +86,20 @@ Main.js
      if (win){ // html congrats
      else (){};// html loser
     addEventListenerRestart
- 
+ ```
  __________________________________
  Game.js
-  Game;
-    countdownGame
+ 
+```javascript
+   Game;
+    countdownGame();
+      triggerNewGame
     
-    mainGame() 
-    triggerNewGame
-    buildNewGame();
+    buildNewGame(score);
+    score;
+    startCounter();
+    addEvenetListener.
+   
     chooseRPS
     revealCPUChoice
     compare
