@@ -1,0 +1,158 @@
+
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 147%;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+p {
+  margin: 0;
+}
+
+
+
+/* ---- layout ---- */
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  margin: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 728px;
+    margin: 0 auto;
+  }
+}
+
+
+
+
+/* ---- components ---- */
+
+.game {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.game header {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.game .score {
+  flex: 1;
+}
+
+.game .label {
+  font-weight: bold;
+}
+
+.game .value {
+  font-style: italic;
+}
+
+.game .timer {
+  flex: 1;
+}
+
+.game .deck {
+  flex: 4;
+  display: flex;
+  align-items: center;
+}
+
+.game .card {
+  height: 200px;
+  line-height: 200px;
+  font-size: 50px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  box-shadow: 2px 2px 2px #ccc;
+  border-radius: 15px;
+}
+
+.game .current-card {
+  flex: 1;
+}
+
+
+.game .card.correct {
+  background: lime;
+}
+
+
+.game .card.incorrect {
+  background: orangered;
+}
+
+.game .actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.game .actions button {
+  flex: 1;
+  height: 80px;
+  font-size: 20px;
+  margin: 20px 0;
+  border: 1px solid black;
+  background-color: hsl(60, 100%, 50%);
+  cursor: pointer;
+}
+
+.game .actions button:hover {
+  background-color: hsl(60, 100%, 80%);
+}
+
+.game .actions button:active {
+  background-color: hsl(60, 100%, 40%);
+}
+
+.game .actions button[disabled] {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.game .next-card {
+  flex: 1;
+}
+
+.game footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
