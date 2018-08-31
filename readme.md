@@ -32,13 +32,15 @@ Task definition in order of priority
 
 
 ### Trello
-[Link url](https://trello.com/b/bPLqhmvj/m1-game)
+[Trello Link](https://trello.com/b/bPLqhmvj/m1-game)
+[Diagram Link](https://drive.google.com/file/d/1d5UhL2zXnw0JjnEuwb_YjMpOinpZJK6-/view?usp=sharing)
+
 
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](https://github.com/Dbpautt/Rock-paper-scissors)
-[Link Deploy](http://github.com)
+[Repo Link](https://github.com/Dbpautt/Rock-paper-scissors)
+/* [Link Deploy](http://github.com)*/
 
 
 ### Slides
