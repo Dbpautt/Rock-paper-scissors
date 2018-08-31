@@ -159,5 +159,5 @@ Main.js
 
 
 ### Slides
-URls for the project presentation (slides)
-- [Link Slides.com](http://slides.com)
+
+- [Slides](http://slides.com)
