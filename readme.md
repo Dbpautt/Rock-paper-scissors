@@ -153,14 +153,11 @@ Main.js
 
 ## Links
 
-[Trello Link](https://trello.com/b/bPLqhmvj/m1-game)
-
-
-URls for the project repo and deploy
-[GitHub Link to the Repo](https://github.com/Dbpautt/Rock-paper-scissors)
-[Link Deploy - TBD](http://github.com)
+- [Trello](https://trello.com/b/bPLqhmvj/m1-game)
+- [GitHub](https://github.com/Dbpautt/Rock-paper-scissors)
+- [GH Pages](http://github.com)
 
 
 ### Slides
 URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+- [Link Slides.com](http://slides.com)
