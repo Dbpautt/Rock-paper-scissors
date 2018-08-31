@@ -39,7 +39,7 @@ PC beats player PC 3/3 or 2/3
 
 ## Backlog
 
-Make it  Rock Paper Scissors _Lizard Spock_
+Make it  Rock Paper Scissors _Lizard🦎 Spock 🖖_
 Create a page to select new player after game over wihtout the need to refresh
 Effects
 Music
