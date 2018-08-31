@@ -1,28 +1,44 @@
 # Rock-paper-scissors
 
 ## Description
-Brief description of the project
+Win condition= Win 3/3 or 2/3
+Loose turn if no deciion made after 3 seconds
 
+> scissors cut paper
+> paper wraps rock
+> rock  crushes scissors
 
 ## MVP (DOM - CANVAS)
-MVP definition, deliverables.
+DOM - HTML// CSS
+
+Definition
+
+Deliverables 
 
 
 ## Backlog
 
+Make it  Rock Paper Scissors Lizard Spock
 
 ## Data structure
 Classes and methods definition.
 
 
+
+
 ## States y States Transitions
-Definition of the different states and their transition (transition functions)
+
+[States and Transitions Diagram](https://drive.google.com/file/d/1d5UhL2zXnw0JjnEuwb_YjMpOinpZJK6-/view?usp=sharing)
 
 - splashScreen
 - gameScreen
 - gameoverScreen
 - winScreen
 
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
 
 ## Task
 Task definition in order of priority
