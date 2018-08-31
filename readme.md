@@ -143,7 +143,7 @@ Main.js
 
 
 URls for the project repo and deploy
-[GitHum Link to the Repo](https://github.com/Dbpautt/Rock-paper-scissors)
+[GitHub Link to the Repo](https://github.com/Dbpautt/Rock-paper-scissors)
 [Link Deploy - TBD](http://github.com)
 
 
