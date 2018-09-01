@@ -32,6 +32,14 @@ Player beats PC 3/3 or 2/3
 
 > rock  crushes scissors = :moyai::muscle:
 
+
+S > P
+S < R
+S = S
+P > R
+P = P
+R = R
+
 ###### Lose conditions:
 
 Lose turn if there's no choice after 3 seconds
@@ -155,7 +163,7 @@ Main.js
 
 - [Trello](https://trello.com/b/bPLqhmvj/m1-game)
 - [GitHub](https://github.com/Dbpautt/Rock-paper-scissors)
-- [GH Pages](http://github.com)
+- [GH Pages](https://dbpautt.github.io/Rock-paper-scissors/)
 
 
 ### Slides
