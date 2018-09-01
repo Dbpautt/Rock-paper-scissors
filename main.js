@@ -9,106 +9,59 @@ function buildDom(html) {
 
 function main() {
 
+
   var splashMain;
-  var gameOverMain;
+  var splashHowTo = null;
+  var gameOverMain = null ;
+  var game = null;
 
-  var game; // instance of Game
-
-  // -- splash
-
-  var input = splashMain.querySelector('input');
-
-  var username = splashMain.querySelector('input');
-  input.addEventListener('keyup', username);
-  
-  function username(){
-    var typeName = input.value;
-    console.log(typeName);
-    return typeName;
-  }
-
+  //-- Game Splash --//
   function buildSplash() {
 
     splashMain = buildDom(`
-      <main>
-        <h1>Up or Down</h1>
-        <button>Start</button>
-        <label for="username">Username</label>
-        <input type="username">
+      <main id="site-main">
+        <div class="container">
+          <h1>Rock, Paper, Scissors!</h1>
+          <label for="name"></label>
+          <input type="text" placeholder="What's your name?">
+          <button>Start</button>
+        </div>
+        <div class="footer">
+          <button>i</button>
+        </div>
       </main>
     `);
-    
-    
-    var button = splashMain.querySelector('button');
-    button.addEventListener('click', startGame);
-    
-    };
-    
     
     document.body.appendChild(splashMain);
+
+    var button = splashMain.querySelector('button');
+    button.addEventListener('click', startGame);
   }
 
+  // function destoySplash() {
+  //   splashMain.remove();
+  // }
 
 
-  function destoySplash() {
-    splashMain.remove();
-  }
 
-  
-  // -- game
-
-  function startGame() {
-    destoySplash();
-    destoyGameOver();
-
-    game = new Game();
-    game.start();
-    game.onOver(function () {
-      gameOver(game.score);
-    });
-
-  }
-
-  function destroyGame() {
-    game.destroy();
-  }
-
-  // -- game over 
+  //-- Splash - How to Play --//
 
 
-  function gameOver(score) {
-    destroyGame();
-    buildGameOver(score);
-  }
 
-  function buildGameOver(score) {
+  //-- Game--//
 
-    gameOverMain = buildDom(`
-      <main>
-        <h1>game over</h1>
-        <p>Your score: <span></span></p>
-        <button>restart</button>
-      </main>
-    `);
 
-    var button = gameOverMain.querySelector('button');
-    button.addEventListener('click', startGame);    
-    
-    var span = gameOverMain.querySelector('span');
-    span.innerText = score;
 
-    document.body.appendChild(gameOverMain);
-  }
 
-  function destoyGameOver() {
-    if (gameOverMain) {
-      gameOverMain.remove();
-    }
-  }
+  //-- Game Over --//
 
-  // -- initialize
+
+
+
+
 
   buildSplash();
+
 }
 
 window.addEventListener('load', main);
