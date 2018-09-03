@@ -107,3 +107,30 @@ div.how-to button {
 }
 
 
+
+/* ---- Game Components gameMain---- */
+
+article{
+  border: 2px solid #265866;
+  background-color: #93ACB1;
+  width: 100px;
+  padding-top: 60px;
+  margin-bottom: 10px;
+}
+
+div.computer-board {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.player-board{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+div.cards {
+display: flex;
+justify-content: space-around;
+}
+

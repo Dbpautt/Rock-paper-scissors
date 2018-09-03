@@ -12,8 +12,10 @@ function main() {
 
   var splashMain;
   var howToScreen;
+  var gameIntro;
   var gameOverMain = null ;
   var game = null;
+
 
   //-- Game Main Splash --//
   function buildSplash() {
@@ -35,12 +37,11 @@ function main() {
     document.body.appendChild(splashMain);
 
     var button = splashMain.querySelector('button');
-    button.addEventListener('click', startGame);
+    button.addEventListener('click', mainGame);
 
     var buttonHowTo = splashMain.querySelector('div.how-to button');
     buttonHowTo.addEventListener('click', splashHowTo);
-    
-
+  
   }
 
   function destroySplash() {
@@ -96,17 +97,29 @@ function main() {
 
 
 
-  function startGame() {
+  // function startGame() {
+  //   destroySplash();
+  //   // destroyGameOver();
+
+  //   game = new Game();
+  //   game.start();
+  //   // game.onOver(function () {
+  //   //   gameOver(game.score);
+  //   // });
+  // }
+
+
+
+  function mainGame() {
     destroySplash();
     // destroyGameOver();
 
     game = new Game();
-    game.start();
+    game.mainGame();
     // game.onOver(function () {
     //   gameOver(game.score);
     // });
   }
-
   //-- Game Over --//
 
 
