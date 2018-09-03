@@ -23,7 +23,11 @@ body {
   line-height: 147%;
 }
 
-h1 {}
+h1 {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
 
 h2 {}
 
@@ -33,36 +37,30 @@ p {
   margin: 0;
 }
 
+label{
+  padding-top: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+input{
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 3px;
+  color: #265866;
+ 
+}
 
 
 /* ---- layout ---- */
 
-#site-header {
-  padding: 30px 0;
-  color: white;
-  background: #111;
-}
-
-#site-footer {
-  color: white;
-  padding: 60px 0;
-  background: #111;
-}
-
-#site-main {
-  padding-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-}
 
 .container {
+  padding-top: 30px;
   margin: 0 20px;
 }
 
-.section {
-  margin-bottom: 20px;
-  padding-top: 20px;
-}
 
 @media (min-width: 768px) {
   .container {
@@ -72,15 +70,40 @@ p {
 }
 
 
-
-
 /* ---- Game Components ---- */
 
+
 .button {
-  width: 100%;
-  background-color: blue;
-  color: #fff;
-  border: 1px solid #fff
+  margin-bottom: 20px;
+  padding: 3px;
+  background-color: #93ACB1;
+  color: #FAFAFA;
+  width: 150px;
+  font-size: 16px;
+  border-radius: 3px;
+  text-transform: uppercase;
 }
 
-/* ---- components ---- */
+/* ---- Game Components splash---- */
+
+div.splash{
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  margin-bottom: 20px;
+  color: #265866;
+}
+
+div.how-to {
+  align-self: flex-end;
+}
+
+div.how-to button {
+  width: auto;
+  justify-self: end;
+  border-radius: 5px;
+  text-transform: none;
+  background-color: #B4C4C9;
+}
+
+
