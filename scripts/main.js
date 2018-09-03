@@ -16,7 +16,6 @@ function main() {
   var gameOverMain = null ;
   var game = null;
 
-
   //-- Game Main Splash --//
   function buildSplash() {
 
@@ -79,47 +78,32 @@ function main() {
     buildHowTo();
   }
 
+  function destroyHowTo() {
+    howToScreen.remove();
+  }
+  
   function returnMain() {
     destroyHowTo();
     buildSplash();
   }
 
-  function destroyHowTo() {
-    howToScreen.remove();
-  }
-  
-
-
-
+ 
 
 
   //-- Game--//
-
-
-
-  // function startGame() {
-  //   destroySplash();
-  //   // destroyGameOver();
-
-  //   game = new Game();
-  //   game.start();
-  //   // game.onOver(function () {
-  //   //   gameOver(game.score);
-  //   // });
-  // }
-
-
 
   function mainGame() {
     destroySplash();
     // destroyGameOver();
 
     game = new Game();
-    game.mainGame();
+    game.roundScreen();
     // game.onOver(function () {
     //   gameOver(game.score);
     // });
   }
+
+
   //-- Game Over --//
 
 

@@ -1,50 +1,95 @@
 'use strict';
 
+
 function Game() {
   var self = this;
+
+  var roundScreen;
+  var destroyRoundScreen;
+  var countDownScreen;
+  var destroyCountDownScreen
+
+
   // self.username = idName;
   self.score = 0;
   self.cards = ['rock','paper','scissors'];
   self.round = null;
   self.gameIntro = null;
+
 }
 
-Game.prototype.start = function () { /@todo build the initial transitions/
+Game.prototype.roundScreen = function () { 
   var self = this;
 
-//   self.gameIntro = buildDom(`
-//     <main class="game container">
-//       <span class="count-down"></span>
-//     </main>
-//   `);
+  self.initialScreen = buildDom(`
+    <main class="game container">
+      <span class="round">Round 1/3 </span>
+    </main>
+  `);
+  document.body.appendChild(self.initialScreen);
 
-//   document.body.appendChild(self.gameIntro);
-  
+  var timeLeft = 3;
 
-//   var timeLeft = 3;
-//   var timer = document.querySelector('span.count-down');
-//   var countDown = document.createElement('h1');
-//   countDown.innerText = timeLeft;
+  var counertId = setInterval(function() {
+    if (timeLeft) {
+      if (timeLeft <= 1){
+        self.countDownScreen();
+      }
+      timeLeft--;
+    } else {
+      clearInterval(counertId);
+    }
+  }, 600);
 
-//   var counertId = setInterval(function() {
-//     if (timeLeft) {
-//       timeLeft--;
-//     } else {
-//       clearInterval(counertId);
-//     }
-//     countDown.innerText = timeLeft;
-//   }, 900);
-
-//   timer.appendChild(countDown);
-
-  
-//   self.mainGame();
 }
 
+Game.prototype.destroyRoundScreen = function () {
+  var self= this;
+
+  self.initialScreen.remove();
+}
+
+Game.prototype.countDownScreen = function () { 
+  var self = this;
+  self.destroyRoundScreen();
+
+  self.gameIntro = buildDom(`
+    <main class="game container">
+      <span class="count-down"></span>
+    </main>
+  `);
+
+  document.body.appendChild(self.gameIntro);
+  
+
+  var timeLeft = 3;
+  var timer = document.querySelector('span.count-down');
+  var countDown = document.createElement('h1');
+  countDown.innerText = timeLeft;
+
+  var counertId = setInterval(function() {
+    if (timeLeft) {
+      if (timeLeft <= 1){
+        self.mainGame();
+      }
+      timeLeft--;
+    } else {
+      clearInterval(counertId);
+    }
+    countDown.innerText = timeLeft;
+  }, 900);
+
+  timer.appendChild(countDown);
+}
+
+Game.prototype.destroyCountDownScreen = function () {
+  var self= this;
+  self.gameIntro.remove();
+}
 
 Game.prototype.mainGame = function (){
-  var self = this;
-  
+  var self = this; 
+  self.destroyCountDownScreen();
 
   self.gamePlay = buildDom(`
     <main>
@@ -59,7 +104,7 @@ Game.prototype.mainGame = function (){
         <article class="computer-choice"></article>
       </div>
       <div class="player-board">
-        <span>timer</span>
+        <span class="timer">timer</span>
         <div class="cards">
           <article class = "Rock"></article>
           <article class = "Paper"></article>
@@ -75,4 +120,27 @@ Game.prototype.mainGame = function (){
 
   document.body.appendChild(self.gamePlay);
 
+  var timeLeft = 3;
+  var timer = document.querySelector('span.timer');
+  var countDown = document.createElement('p');
+  countDown.innerText = timeLeft;
+
+  var counertId = setInterval(function() {
+    if (timeLeft) {
+      if (timeLeft <= 1){
+        self.computerPicks();
+      }
+      timeLeft--;
+    } else {
+      clearInterval(counertId);
+    }
+    countDown.innerText = timeLeft;
+  }, 900);
+
+  timer.appendChild(countDown);
+
+}
+
+Game.prototype.computerPicks = function (){
+  
 }
