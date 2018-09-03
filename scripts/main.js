@@ -40,23 +40,15 @@ function main() {
     var buttonHowTo = splashMain.querySelector('div.how-to button');
     buttonHowTo.addEventListener('click', splashHowTo);
     
+
   }
 
   function destroySplash() {
     splashMain.remove();
   }
 
-  function startGame() {
-    destroySplash();
-    // destoyGameOver();
+  //-- Splash - How to Play --//
 
-    // game = new Game();
-    // game.start();
-    // game.onOver(function () {
-    //   gameOver(game.score);
-    // });
-  }
-  
   function buildHowTo() {
     howToScreen = buildDom(`
       <main>
@@ -76,6 +68,9 @@ function main() {
   
     `);
     document.body.appendChild(howToScreen);
+
+    var goBack = howToScreen.querySelector('div.how-to button');
+    goBack.addEventListener('click', returnMain);
   }
 
   function splashHowTo() {
@@ -83,13 +78,17 @@ function main() {
     buildHowTo();
   }
 
-  function destoyHowTo() {
-    splashHowTo.remove();
+  function returnMain() {
+    destroyHowTo();
+    buildSplash();
+  }
+
+  function destroyHowTo() {
+    howToScreen.remove();
   }
   
 
 
-  //-- Splash - How to Play --//
 
 
 
@@ -97,6 +96,16 @@ function main() {
 
 
 
+  function startGame() {
+    destroySplash();
+    // destroyGameOver();
+
+    game = new Game();
+    game.start();
+    // game.onOver(function () {
+    //   gameOver(game.score);
+    // });
+  }
 
   //-- Game Over --//
 
