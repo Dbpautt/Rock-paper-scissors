@@ -7,6 +7,12 @@ This will be a Rock paper scissors game, dreaming to become a Rock Paper Scissor
 ## MVP (DOM - CANVAS)
 Technology => DOM - HTML// CSS
 
+## Development
+
+This project uses SCSS. Use the following line to compile to CSS while you are coding:
+
+```node-sass --output-style compressed --source-map true --watch scss/style.scss stylesheets/style.css```
+
 **_Definition:_**
 
 Player plays against computer, has three seconds to pick *'Rock':moyai: 'Paper':page_facing_up: or 'Scissors':scissors:*, the game displays result.
@@ -44,6 +50,8 @@ R = R
 
 Lose turn if there's no choice after 3 seconds
 PC beats player PC 3/3 or 2/3 
+
+
 
 ## Backlog
 

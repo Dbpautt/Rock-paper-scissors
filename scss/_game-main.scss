@@ -1,0 +1,26 @@
+article{
+  border: 2px solid #265866;
+  background-color: #93ACB1;
+  width: 100px;
+  padding-top: 60px;
+  margin-bottom: 10px;
+}
+
+div{
+  display: flex;
+
+  &.computer-board {
+    justify-content: space-around;
+  }
+  
+  &.player-board{
+
+    align-content: center;
+    flex-direction: column;
+  }
+  
+  &.cards {
+  justify-content: space-around;
+  }
+
+}

@@ -1,0 +1,19 @@
+div.splash{
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  margin-bottom: 20px;
+  color: #265866;
+}
+
+div.how-to {
+  align-self: flex-end;
+}
+
+div.how-to button {
+  width: auto;
+  justify-self: end;
+  border-radius: 5px;
+  text-transform: none;
+  background-color: #B4C4C9;
+}
