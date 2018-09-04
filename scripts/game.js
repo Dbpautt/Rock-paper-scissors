@@ -14,8 +14,7 @@ function Game() {
   // self.username = idName;
   self.score = 0;
   self.cards = ['rock','paper','scissors'];
-  self.randomCard = self.cards[Math.floor(Math.random() * self.cards.length)]
-  self.round = null;
+  self.round = 1;
   self.gameIntro = null;
 
 }
@@ -41,7 +40,7 @@ Game.prototype.roundScreen = function () {
     } else {
       clearInterval(counertId);
     }
-  }, 600);
+  }, 100);
 
 }
 
@@ -79,7 +78,7 @@ Game.prototype.countDownScreen = function () {
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 900);
+  }, 100);
 
   timer.appendChild(countDown);
 }
@@ -96,9 +95,10 @@ Game.prototype.mainGame = function (){
   self.gamePlay = buildDom(`
     <main class = "game container">
       <div class="header-game">
-        <p>score:</p>
+        <span><p>score:</p>`+ self.score +`</span>
+        <span><p>round:</p>`+ self.round +`</span>
       </div>
-    
+
       <div>
         <h2>Computer</h2>
       </div>
@@ -108,9 +108,9 @@ Game.prototype.mainGame = function (){
       <div class="player-board">
         <span class="timer">timer</span>
         <div class="cards">
-          <article class = "Rock"></article>
-          <article class = "Paper"></article>
-          <article class = "Scissors"></article>
+          <article class ="rock" card="rock" ></article>
+          <article class ="paper" card="paper"></article>
+          <article class ="scissors" card="scissors"></article>
         </div>
       </div>
       <div>
@@ -137,27 +137,59 @@ Game.prototype.mainGame = function (){
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 900);
+  }, 300);
 
   timer.appendChild(countDown);
+
+  self.userPick();
+
 
 }
 
 Game.prototype.computerPick = function (){
   var self = this;
 
+  self.randomCard = self.cards[Math.floor(Math.random() * self.cards.length)]
+
   self.computersChoice = document.querySelector('.computer-choice');
   self.computersChoice.innerText = self.randomCard;
-  // if (self.randomCard === self.cards[0]) {
-  //   self.computersChoice.classList.toggle('.rock')
-  // }
   console.log(self.randomCard)
+  // if (self.randomCard === self.cards[0]) { //--------> backlog
+  //   self.computersChoice.classList.toggle('article.rock')
+  // }
 
 }
 
 Game.prototype.userPick = function (){
   var self = this;
 
-  self.usersChoice = querySelector('article.rock')
+  self.userChoice = document.querySelector('.cards');
+  self.userChoice.addEventListener('click', function(event){
+    self.compareChoice(event.target.getAttribute('card'));
+  });
 
 }
+
+
+Game.prototype.compareChoice = function (userChoice){
+  var self = this;
+
+  if (self.userChoice == 'scissors' && self.randomCard == 'scissors'){
+    console.log('it\'s a tie!')
+  } else if (self.userChoice == 'rock' && self.randomCard == 'rock'){
+    console.log('it\'s a tie!')
+  } else if (self.userChoice == 'paper' && self.randomCard == 'paper'){
+    console.log('it\'s a tie!')
+  } else if (self.userChoice == 'scissors' && self.randomCard == 'paper'){
+    console.log('scissors wins')
+  } else if (self.userChoice == 'scissors' && self.userChoice == 'rock'){
+    console.log('rock wins')
+  } else if (self.userChoice == 'paper' && self.userChoice == 'rock'){
+    console.log('rock wins')
+  } else {
+    console.log('wtf')
+  }
+
+}
+  // self.userChoice.removeAttribute('disabled'); enable disable more choices to include at timeoutwhen comparing
+

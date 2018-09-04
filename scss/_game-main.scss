@@ -25,7 +25,7 @@ div{
 
 }
 article{
-  .rock{
-    background: url("../RPS\ icons/rock.png")
+  &.rock{
+    background-image: url(../RPS\ icons/rock.png);
   }
 }
