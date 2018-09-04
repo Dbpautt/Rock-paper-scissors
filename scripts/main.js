@@ -87,9 +87,6 @@ function main() {
     buildSplash();
   }
 
- 
-
-
   //-- Game--//
 
   function mainGame() {

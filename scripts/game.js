@@ -141,6 +141,10 @@ Game.prototype.mainGame = function (){
 
 }
 
-Game.prototype.computerPicks = function (){
-  
+Game.prototype.computerPick = function (){
+  var self = this;
+
+  self.round.innerText = self.cards.length;
+
+
 }
