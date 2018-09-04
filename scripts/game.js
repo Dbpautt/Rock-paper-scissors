@@ -8,19 +8,23 @@ function Game() {
   var destroyRoundScreen;
   var countDownScreen;
   var destroyCountDownScreen;
-  var computerPick
+  var computerPick;
+  var currentRound = 1;
 
 
   // self.username = idName;
   self.score = 0;
+  self.totalScore = 3;
   self.cards = ['rock','paper','scissors'];
-  self.round = 1;
-  self.gameIntro = null;
+  self.totalRound = 3;
+  self.gameIntro;
+  self.gamePlay;
 
 }
 
 Game.prototype.roundScreen = function () { 
   var self = this;
+  self.currentRound = 1;
 
   self.initialScreen = buildDom(`
     <main class="game container">
@@ -40,7 +44,7 @@ Game.prototype.roundScreen = function () {
     } else {
       clearInterval(counertId);
     }
-  }, 100);
+  }, 300);
 
 }
 
@@ -95,8 +99,8 @@ Game.prototype.mainGame = function (){
   self.gamePlay = buildDom(`
     <main class = "game container">
       <div class="header-game">
-        <span><p>score:</p>`+ self.score +`</span>
-        <span><p>round:</p>`+ self.round +`</span>
+        <span><p>score:</p>`+ self.score +`/`+ self.totalScore +`</span>
+        <span><p>round:</p>`+ self.currentRound +`/`+ self.totalRound +`</span>
       </div>
 
       <div>
@@ -130,31 +134,30 @@ Game.prototype.mainGame = function (){
   var counertId = setInterval(function() {
     if (timeLeft) {
       if (timeLeft <= 1){
-        self.computerPick();
+        self.compareChoice();
       }
       timeLeft--;
     } else {
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 300);
+  }, 1000);
 
   timer.appendChild(countDown);
 
   self.userPick();
-
-
+  self.computerPick();
 }
 
 Game.prototype.computerPick = function (){
   var self = this;
 
-  self.randomCard = self.cards[Math.floor(Math.random() * self.cards.length)]
+  self.computerChoice = self.cards[Math.floor(Math.random() * self.cards.length)]
 
   self.computersChoice = document.querySelector('.computer-choice');
-  self.computersChoice.innerText = self.randomCard;
-  console.log(self.randomCard)
-  // if (self.randomCard === self.cards[0]) { //--------> backlog
+  self.computersChoice.innerText = self.computerChoice;
+  console.log(self.computerChoice)
+  // if (self.computerChoice === self.cards[0]) { //--------> backlog
   //   self.computersChoice.classList.toggle('article.rock')
   // }
 
@@ -163,33 +166,66 @@ Game.prototype.computerPick = function (){
 Game.prototype.userPick = function (){
   var self = this;
 
-  self.userChoice = document.querySelector('.cards');
-  self.userChoice.addEventListener('click', function(event){
-    self.compareChoice(event.target.getAttribute('card'));
+  self.cardToPicked = document.querySelector('.cards');
+  self.cardToPicked.addEventListener('click', function(event){
+    self.userChoice = event.target.getAttribute('card');
   });
-
 }
 
 
-Game.prototype.compareChoice = function (userChoice){
+
+
+Game.prototype.compareChoice = function (){
   var self = this;
 
-  if (self.userChoice == 'scissors' && self.randomCard == 'scissors'){
+  if (self.userChoice == 'scissors' && self.computerChoice == 'scissors'){
+    self.updateRound();
+    self.totalRound+1;
     console.log('it\'s a tie!')
-  } else if (self.userChoice == 'rock' && self.randomCard == 'rock'){
-    console.log('it\'s a tie!')
-  } else if (self.userChoice == 'paper' && self.randomCard == 'paper'){
-    console.log('it\'s a tie!')
-  } else if (self.userChoice == 'scissors' && self.randomCard == 'paper'){
+  } else if (self.userChoice == 'scissors' && self.computerChoice == 'paper'){
+    self.updateRound();
+    self.currentScore+1;
     console.log('scissors wins')
-  } else if (self.userChoice == 'scissors' && self.userChoice == 'rock'){
+  } else if (self.userChoice == 'scissors' && self.computerChoice == 'rock'){
+    self.updateRound();
     console.log('rock wins')
-  } else if (self.userChoice == 'paper' && self.userChoice == 'rock'){
+  } else if (self.userChoice == 'rock' && self.computerChoice == 'rock'){
+    self.updateRound();
+    self.totalRound+1;
+    console.log('it\'s a tie!')
+  } else if (self.userChoice == 'rock' && self.computerChoice == 'paper'){
+    self.updateRound();
+    console.log('paper wins')
+  } else if (self.userChoice == 'rock' && self.computerChoice == 'scissors'){
+    self.updateRound();
+    self.currentScore+1;
     console.log('rock wins')
+  } else if (self.userChoice == 'paper' && self.computerChoice == 'paper'){
+    self.updateRound();
+    self.totalRound+1;
+    console.log('it\'s a tie!')
+  } else if (self.userChoice == 'paper' && self.computerChoice == 'rock'){
+    self.updateRound();
+    self.currentScore+1;
+    console.log('paper wins')
+  } else if (self.userChoice == 'paper' && self.computerChoice == 'scissors'){
+    self.updateRound();
+    console.log('scissors wins')
   } else {
     console.log('wtf')
   }
 
+  self.gamePlay.remove();
+  self.roundScreen();
+
 }
-  // self.userChoice.removeAttribute('disabled'); enable disable more choices to include at timeoutwhen comparing
+
+Game.prototype.updateRound = function (){
+  var self = this;
+
+  self.currentRound+1;
+}
+
+
+// self.userChoice.removeAttribute('disabled'); enable disable more choices to include at timeoutwhen comparing
 
