@@ -92,7 +92,7 @@ Game.prototype.mainGame = function (){
   self.destroyCountDownScreen();
 
   self.gamePlay = buildDom(`
-    <main>
+    <main class = "game container">
       <div class="header-game">
         <p>score:</p>
       </div>
@@ -138,6 +138,15 @@ Game.prototype.mainGame = function (){
   }, 900);
 
   timer.appendChild(countDown);
+
+}
+
+Game.prototype.userPick = function (){
+  var self = this;
+
+  var round = querySelector('')
+  self.round.innerText = self.cards.length;
+
 
 }
 
