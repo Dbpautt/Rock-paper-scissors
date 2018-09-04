@@ -11,6 +11,7 @@ Technology => DOM - HTML// CSS
 
 This project uses SCSS. Use the following line to compile to CSS while you are coding:
 
+
 ```node-sass --output-style compressed --source-map true --watch scss/style.scss stylesheets/style.css```
 
 **_Definition:_**

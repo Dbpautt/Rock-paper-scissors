@@ -7,12 +7,14 @@ function Game() {
   var roundScreen;
   var destroyRoundScreen;
   var countDownScreen;
-  var destroyCountDownScreen
+  var destroyCountDownScreen;
+  var computerPick
 
 
   // self.username = idName;
   self.score = 0;
   self.cards = ['rock','paper','scissors'];
+  self.randomCard = self.cards[Math.floor(Math.random() * self.cards.length)]
   self.round = null;
   self.gameIntro = null;
 
@@ -128,7 +130,7 @@ Game.prototype.mainGame = function (){
   var counertId = setInterval(function() {
     if (timeLeft) {
       if (timeLeft <= 1){
-        self.computerPicks();
+        self.computerPick();
       }
       timeLeft--;
     } else {
@@ -141,19 +143,21 @@ Game.prototype.mainGame = function (){
 
 }
 
-Game.prototype.userPick = function (){
-  var self = this;
-
-  var round = querySelector('')
-  self.round.innerText = self.cards.length;
-
-
-}
-
 Game.prototype.computerPick = function (){
   var self = this;
 
-  self.round.innerText = self.cards.length;
+  self.computersChoice = document.querySelector('.computer-choice');
+  self.computersChoice.innerText = self.randomCard;
+  // if (self.randomCard === self.cards[0]) {
+  //   self.computersChoice.classList.toggle('.rock')
+  // }
+  console.log(self.randomCard)
 
+}
+
+Game.prototype.userPick = function (){
+  var self = this;
+
+  self.usersChoice = querySelector('article.rock')
 
 }
