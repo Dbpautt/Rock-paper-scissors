@@ -13,9 +13,11 @@ function Game() {
 
 
   // self.username = idName;
-  self.score = 0;
+  self.userScore = 0;
+  self.computerScore = 0;
   self.totalScore = 3;
   self.cards = ['rock','paper','scissors'];
+  self.currentRound = 1;
   self.totalRound = 3;
   self.gameIntro;
   self.gamePlay;
@@ -24,11 +26,11 @@ function Game() {
 
 Game.prototype.roundScreen = function () { 
   var self = this;
-  self.currentRound = 1;
+  
 
   self.initialScreen = buildDom(`
     <main class="game container">
-      <span class="round">Round 1/3 </span>
+      <span class="round">Round`+ self.currentRound +`/`+ self.totalRound +`</span>
     </main>
   `);
   document.body.appendChild(self.initialScreen);
@@ -82,7 +84,7 @@ Game.prototype.countDownScreen = function () {
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 100);
+  }, 300);
 
   timer.appendChild(countDown);
 }
@@ -99,7 +101,7 @@ Game.prototype.mainGame = function (){
   self.gamePlay = buildDom(`
     <main class = "game container">
       <div class="header-game">
-        <span><p>score:</p>`+ self.score +`/`+ self.totalScore +`</span>
+        <span><p>score:</p>`+ self.userScore +`/`+ self.totalScore +`</span>
         <span><p>round:</p>`+ self.currentRound +`/`+ self.totalRound +`</span>
       </div>
 
@@ -107,21 +109,21 @@ Game.prototype.mainGame = function (){
         <h2>Computer</h2>
       </div>
       <div class="computer-board">
-        <article class="computer-choice"></article>
+        <img src="./RPS icons/pc.png" alt="" class="computer-choice" width="25%" height="25%">
+        
       </div>
       <div class="player-board">
         <span class="timer">timer</span>
         <div class="cards">
-          <article class ="rock" card="rock" ></article>
-          <article class ="paper" card="paper"></article>
-          <article class ="scissors" card="scissors"></article>
+          <img src="./RPS icons/rock.png" alt="" class ="rock" card="rock" width="25%" height="25%">
+          <img src="./RPS icons/paper.png" alt="" class ="paper" card="paper" width="25%" height="25%">
+          <img src="./RPS icons/scissors.png" alt="" class ="scissors" card="scissors" width="25%" height="25%">
         </div>
       </div>
       <div>
         <h2>Username</h2>
       </div>
     </main>
-
   `);
 
   document.body.appendChild(self.gamePlay);
@@ -155,19 +157,20 @@ Game.prototype.computerPick = function (){
   self.computerChoice = self.cards[Math.floor(Math.random() * self.cards.length)]
 
   self.computersChoice = document.querySelector('.computer-choice');
+  var displayComputerChoice = document.createElement('span');
   self.computersChoice.innerText = self.computerChoice;
+  self.computersChoice.appendChild(displayComputerChoice)
   console.log(self.computerChoice)
-  // if (self.computerChoice === self.cards[0]) { //--------> backlog
-  //   self.computersChoice.classList.toggle('article.rock')
-  // }
+  
+
 
 }
 
 Game.prototype.userPick = function (){
   var self = this;
 
-  self.cardToPicked = document.querySelector('.cards');
-  self.cardToPicked.addEventListener('click', function(event){
+  self.cardToPick = document.querySelector('.cards');
+  self.cardToPick.addEventListener('click', function(event){
     self.userChoice = event.target.getAttribute('card');
   });
 }
@@ -178,55 +181,110 @@ Game.prototype.userPick = function (){
 
 Game.prototype.compareChoice = function (){
   var self = this;
+  self.userScore;
 
   if (self.userChoice == 'scissors' && self.computerChoice == 'scissors'){
-    self.updateRound();
-    self.totalRound+1;
-    console.log('it\'s a tie!')
+    self.updateTotalRound();
+    console.log('it\'s a tie!');
   } else if (self.userChoice == 'scissors' && self.computerChoice == 'paper'){
-    self.updateRound();
-    self.currentScore+1;
-    console.log('scissors wins')
+    self.updateUserScore();
+    console.log('scissors wins');
   } else if (self.userChoice == 'scissors' && self.computerChoice == 'rock'){
-    self.updateRound();
-    console.log('rock wins')
+    self.updateComputerScore();
+    console.log('rock wins');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'rock'){
-    self.updateRound();
-    self.totalRound+1;
-    console.log('it\'s a tie!')
+    self.updateTotalRound();
+    console.log('it\'s a tie!');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'paper'){
-    self.updateRound();
-    console.log('paper wins')
+    self.updateComputerScore();
+    console.log('paper wins');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'scissors'){
-    self.updateRound();
-    self.currentScore+1;
-    console.log('rock wins')
+    self.updateUserScore();
+    console.log('rock wins');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'paper'){
-    self.updateRound();
-    self.totalRound+1;
-    console.log('it\'s a tie!')
+    self.updateTotalRound();
+    console.log('it\'s a tie!');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'rock'){
-    self.updateRound();
-    self.currentScore+1;
-    console.log('paper wins')
+    self.updateUserScore();
+    console.log('paper wins');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'scissors'){
-    self.updateRound();
-    console.log('scissors wins')
+    self.updateComputerScore();
+    console.log('scissors wins');
   } else {
-    console.log('wtf')
+    console.log('too slow you didnt pick ');
   }
 
   self.gamePlay.remove();
-  self.roundScreen();
-
+  if (self.userScore === 2 || self.computerScore === 2){
+    self.gameOver(self.userScore,self.computerScore);
+  } else {
+    self.updateRound();
+    self.roundScreen();
+  } 
 }
 
 Game.prototype.updateRound = function (){
   var self = this;
 
-  self.currentRound+1;
+  self.currentRound = self.currentRound+1;
+}
+
+Game.prototype.updateUserScore = function (){
+  var self = this;
+
+  self.userScore = self.userScore+1;
+}
+
+Game.prototype.updateTotalRound = function (){
+  var self = this;
+
+  self.totalRound = self.totalRound+1;
+}
+
+Game.prototype.updateComputerScore = function (){
+  var self = this;
+  self.computerScore = self.computerScore+1;
+}
+
+Game.prototype.gameOver = function (userScore,computerScore){
+  var self = this;
+
+  self.destroyCountDownScreen();
+
+  if (userScore === 2){
+    self.winScreen(); 
+  } else if (computerScore === 2 ){
+    self.loseScreen();
+  } else {
+    console.log('whaaaaat?')
+  }
+}
+
+Game.prototype.winScreen = function (){
+  var self = this;
+
+  self.winGame = buildDom(`
+    <main class="game container">
+      <span class="count-down"> you win</span>
+    </main>
+  `);
+
+  document.body.appendChild(self.winGame);
+
+}
+
+Game.prototype.loseScreen = function (){
+
+  self.loseGame = buildDom(`
+    <main class="game container">
+      <span class="count-down"> you lose</span>
+    </main>
+  `);
+
+  document.body.appendChild(self.loseGame);
 }
 
 
 // self.userChoice.removeAttribute('disabled'); enable disable more choices to include at timeoutwhen comparing
+
 

@@ -7,7 +7,7 @@ article{
 }
 
 div{
-  display: flex;
+  align-content: center;
 
   &.computer-board {
     justify-content: space-around;
@@ -20,7 +20,11 @@ div{
   }
   
   &.cards {
-  justify-content: space-around;
+    display: none;
+    justify-content: space-around;
+    img {
+      width: 25% auto;
+    }
   }
 
 }

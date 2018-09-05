@@ -1,9 +1,11 @@
-div.splash{
-  display: flex;
-  align-items: center;
-  flex-direction: column;  
-  margin-bottom: 20px;
-  color: #265866;
+div{
+  &.splash{
+    display: flex;
+    align-items: center;
+    flex-direction: column;  
+    margin-bottom: 20px;
+    color: #265866;
+  }
 }
 
 div.how-to {

@@ -107,7 +107,6 @@ function main() {
 
 
 
-
   buildSplash();
 
   
