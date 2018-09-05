@@ -255,19 +255,16 @@ Game.prototype.nextRound = function () {
 
 Game.prototype.updateRound = function (){
   var self = this;
-
   self.currentRound = self.currentRound+1;
 }
 
 Game.prototype.updateUserScore = function (){
   var self = this;
-
   self.userScore = self.userScore+1;
 }
 
 Game.prototype.updateTotalRound = function (){
   var self = this;
-
   self.totalRound = self.totalRound+1;
 }
 
@@ -296,10 +293,15 @@ Game.prototype.winScreen = function (){
   self.winGame = buildDom(`
     <main class="game container">
       <span class="count-down"> you win</span>
+      <img src="./RPS icons/winner.gif" alt="">
+      <button>Play again!</button>
     </main>
   `);
 
   document.body.appendChild(self.winGame);
+
+  var playAgain = document.querySelector('button');
+  playAgain.addEventListener('click', returnMain)
 
 }
 
@@ -308,13 +310,12 @@ Game.prototype.loseScreen = function (){
   self.loseGame = buildDom(`
     <main class="game container">
       <span class="count-down"> you lose</span>
+      <img src="./RPS icons/loser.gif" alt="">
+      <button>Play again!</button>
     </main>
   `);
 
   document.body.appendChild(self.loseGame);
 }
-
-
-// self.userChoice.removeAttribute('disabled'); enable disable more choices to include at timeoutwhen comparing
 
 
