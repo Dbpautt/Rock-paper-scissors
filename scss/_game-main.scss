@@ -6,7 +6,7 @@ article{
   margin-bottom: 10px;
 }
 
-div{
+div {
   align-content: center;
 
   &.computer-board {
@@ -20,7 +20,6 @@ div{
   }
   
   &.cards {
-    display: none;
     justify-content: space-around;
     img {
       width: 25% auto;
@@ -28,9 +27,13 @@ div{
   }
 
 }
-article{
-  &.rock{
-    background-image: url(../RPS\ icons/rock.png);
-    background-size: 70px;
-  }
+
+
+.pc-scissors {
+  display: block;
+  box-sizing: border-box;
+  background: url(http://akamaicovers.oreilly.com/images/9780596517748/cat.gif) no-repeat;
+  width: 180px;
+  height: 236px;
+  padding-left: 180px;
 }

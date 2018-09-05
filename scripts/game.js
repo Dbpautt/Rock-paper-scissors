@@ -156,10 +156,15 @@ Game.prototype.computerPick = function (){
 
   self.computerChoice = self.cards[Math.floor(Math.random() * self.cards.length)]
 
-  self.computersChoice = document.querySelector('.computer-choice');
-  var displayComputerChoice = document.createElement('span');
-  self.computersChoice.innerText = self.computerChoice;
-  self.computersChoice.appendChild(displayComputerChoice)
+  var displayComputerChoice = document.querySelector('.computer-choice');
+  if (self.computerChoice == 'scissors'){
+    displayComputerChoice.textContent = ('.pc-scissors')
+  }
+
+  // self.computersChoice.classList.toggle('');
+  // self.computersChoice.appendChild(displayComputerChoice)
+
+  
   console.log(self.computerChoice)
   
 
@@ -181,7 +186,6 @@ Game.prototype.userPick = function (){
 
 Game.prototype.compareChoice = function (){
   var self = this;
-  self.userScore;
 
   if (self.userChoice == 'scissors' && self.computerChoice == 'scissors'){
     self.updateTotalRound();
@@ -211,16 +215,42 @@ Game.prototype.compareChoice = function (){
     self.updateComputerScore();
     console.log('scissors wins');
   } else {
+    self.updateComputerScore();
     console.log('too slow you didnt pick ');
   }
 
-  self.gamePlay.remove();
-  if (self.userScore === 2 || self.computerScore === 2){
-    self.gameOver(self.userScore,self.computerScore);
-  } else {
-    self.updateRound();
-    self.roundScreen();
-  } 
+  self.displayResult();
+
+  setTimeout(function(){
+    self.gamePlay.remove();
+    if (self.userScore === 2 || self.computerScore === 2){
+      self.gameOver(self.userScore,self.computerScore);
+    } else {
+      self.nextRound();
+    } 
+  }, 3000)
+  
+}
+
+Game.prototype.displayResult = function () {
+  var self = this;
+
+  var computerChoiceImage = document.querySelector('img.computer-choice');
+  computerChoiceImage.src = './RPS icons/' + self.computerChoice + '2.png'
+  
+
+  if (self.userChoice){
+  var userChoiceImage = document.querySelector('img.' + self.userChoice);
+  userChoiceImage.src = './RPS icons/' + self.userChoice + '2.png'
+  }
+}
+
+Game.prototype.nextRound = function () {
+  var self = this;
+
+  self.userChoice = null;
+  self.updateRound();
+  self.roundScreen();
 }
 
 Game.prototype.updateRound = function (){
