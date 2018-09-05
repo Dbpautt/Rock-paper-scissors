@@ -175,6 +175,7 @@ Game.prototype.userPick = function (){
 
 
 
+
 Game.prototype.compareChoice = function (){
   var self = this;
 
