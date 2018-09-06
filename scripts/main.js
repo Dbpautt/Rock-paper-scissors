@@ -21,16 +21,16 @@ function main() {
 
     splashMain = buildDom(`
       <main class="game container">
-        <div class="container splash">
+        <div class="splash">
           <h1>Rock, Paper, Scissors!</h1>
           <label for="name">What's your name?</label>
           <input type="text" placeholder="Edward Scissorhands">
           <button>Start</button>
           <img class ="gif" src="./RPS icons/rock-paper-scissors.gif">
+          </div>
           <div class="how-to">
             <button class="how-to-button">How to play</button>
           </div>
-        </div>
       </main>
     `);
     
@@ -106,13 +106,6 @@ function main() {
     //   gameOver(game.score);
     // });
   }
-
-
-  //-- Game Over --//
-
-
-
-
 
   buildSplash();
 

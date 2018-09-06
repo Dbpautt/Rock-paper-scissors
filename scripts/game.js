@@ -45,7 +45,7 @@ Game.prototype.roundScreen = function () {
     } else {
       clearInterval(counertId);
     }
-  }, 900);
+  }, 900); //time round screen remains on hold
 
 }
 
@@ -83,7 +83,7 @@ Game.prototype.countDownScreen = function () {
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 500);
+  }, 500); // timer 1,2,3 rock paper scissors!!
 
   timer.appendChild(countDown);
 }
@@ -113,6 +113,7 @@ Game.prototype.mainGame = function (){
           <img src="./RPS icons/pc.png" alt="" class="computer-choice" width="25%" height="25%">
         </div>
         <div class="player-board">
+            <h1></h1>
             <span class="timer">Make your choice in </span>
             <div class="cards">
               <img src="./RPS icons/rock.png" alt="" class ="rock disable" card="rock" width="25%" height="25%">
@@ -144,7 +145,7 @@ Game.prototype.mainGame = function (){
       clearInterval(counertId);
     }
     countDown.innerText = timeLeft;
-  }, 400);
+  }, 900); // time user has for choosing before comparing results
 
   timer.appendChild(countDown);
 
@@ -224,6 +225,7 @@ Game.prototype.compareChoice = function (){
     console.log('too slow you didnt pick ');
   }
 
+
   self.displayResult();
 
   setTimeout(function(){
@@ -233,7 +235,7 @@ Game.prototype.compareChoice = function (){
     } else {
       self.nextRound();
     } 
-  }, 2000)
+  }, 2000) // freeze time antes de hacer roundScreen
   
 }
 
@@ -247,6 +249,7 @@ Game.prototype.displayResult = function () {
   var userChoiceImage = document.querySelector('img.' + self.userChoice);
   userChoiceImage.src = './RPS icons/' + self.userChoice + '2.png'
   }
+  document.querySelector('span.timer').remove();
 }
 
 Game.prototype.nextRound = function () {
@@ -280,21 +283,29 @@ Game.prototype.updateComputerScore = function (){
 Game.prototype.playerWins = function (){
   var self = this;
 
+  var playerWinsMessage =document.querySelector('h1');
+  playerWinsMessage.innerText = ' scores with ' +self.userChoice+' !';
 }
 
 Game.prototype.pcWins = function (){
   var self = this;
 
+  var pcWinsMessage =document.querySelector('h1');
+  pcWinsMessage.innerText = 'Computer scores with ' +self.computerChoice+' !';
 }
 
 Game.prototype.gameTie = function (){
   var self = this;
 
+  var gameTieMessage =document.querySelector('h1');
+  gameTieMessage.innerText = 'Say whaaaat?! You\'ve bot selected ' +self.userChoice+' !';
 }
 
 Game.prototype.noChoice = function (){
   var self = this;
 
+  var noChoiceMessage =document.querySelector('h1');
+  noChoiceMessage.innerText = 'To slow ';
 }
 
 Game.prototype.gameOver = function (userScore,computerScore){
