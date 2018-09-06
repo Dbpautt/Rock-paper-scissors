@@ -177,4 +177,4 @@ Main.js
 
 ### Slides
 
-- [Slides](http://slides.com)
+- [Slides](https://slides.com/dianablanco/deck)

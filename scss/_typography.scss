@@ -1,6 +1,6 @@
 body {
   color: #111;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   line-height: 147%;
 }
@@ -8,7 +8,7 @@ body {
 h1 {
   padding-top: 10px;
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 // h2 {}
@@ -16,13 +16,13 @@ h1 {
 // h3 {}
 
 p {
-  margin: 0;
+  margin-bottom: 5px;
 }
 
 label{
   padding-top: 10px;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 input{
@@ -32,4 +32,9 @@ input{
   border-radius: 3px;
   color: #265866;
  
+}
+
+strong{
+  font-size: 19px;
+
 }

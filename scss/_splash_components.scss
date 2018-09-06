@@ -5,17 +5,33 @@ div{
     flex-direction: column;  
     margin-bottom: 20px;
     color: #265866;
+    text-align: center;
   }
+  
+  &.how-to {
+    align-self: flex-end;
+    padding-top: 20px;
+  }
+
+  &.icon{
+       padding-top: 10px;
+       margin-bottom: 10px;
+       display: flex;
+       justify-content: center;
+  }
+  
+  img {
+    width: 41%;
+
+    &.icon {
+      width:20%;
+    }
+    &.gif{
+      width:27%;
+    }
+  }
+  
 }
 
-div.how-to {
-  align-self: flex-end;
-}
 
-div.how-to button {
-  width: auto;
-  justify-self: end;
-  border-radius: 5px;
-  text-transform: none;
-  background-color: #B4C4C9;
-}
+

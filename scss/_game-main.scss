@@ -1,3 +1,6 @@
+
+
+
 article{
   border: 2px solid #265866;
   background-color: #93ACB1;
@@ -7,7 +10,6 @@ article{
 }
 
 div {
-  align-content: center;
 
   &.computer-board {
     justify-content: space-around;
@@ -28,6 +30,15 @@ div {
 
 }
 
+span{
+  &.round{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 30px;
+  }
+}
 
 .pc-scissors {
   display: block;

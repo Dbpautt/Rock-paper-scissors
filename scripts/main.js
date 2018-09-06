@@ -20,14 +20,15 @@ function main() {
   function buildSplash() {
 
     splashMain = buildDom(`
-      <main>
+      <main class="game container">
         <div class="container splash">
           <h1>Rock, Paper, Scissors!</h1>
           <label for="name">What's your name?</label>
-          <input type="text" placeholder="Austin Powers">
-          <button class="button">Start</button>
+          <input type="text" placeholder="Edward Scissorhands">
+          <button>Start</button>
+          <img class ="gif" src="./RPS icons/rock-paper-scissors.gif">
           <div class="how-to">
-            <button class="button">How to play</button>
+            <button class="how-to-button">How to play</button>
           </div>
         </div>
       </main>
@@ -51,14 +52,20 @@ function main() {
 
   function buildHowTo() {
     howToScreen = buildDom(`
-      <main>
-        <div>
+      <main class="game container">
+        <div class = "splash">
           <h1>How to play</h1>
-          <p>Player plays against computer, has three seconds to pick 'Rock'🗿 'Paper'📄 or 'Scissors'✂️.
-            to win you have to wint the computer at least two times.
-            scissors cut paper = ✂️💪
-            paper wraps rock = 📄💪
-            rock crushes scissors = 🗿💪
+          <img src="https://media3.giphy.com/media/Xmbnu0oH3bMEo/giphy.gif" >
+          <p>You play against the computer, and have 2 seconds to pick:</p>
+            <div class="icon">
+              <img src="./RPS icons/rock2.png" class="icon" width="25%" height="25%">
+              <img src="./RPS icons/paper2.png" class="icon" width="25%" height="25%">
+              <img src="./RPS icons/scissors2.png" class="icon" width="25%" height="25%">
+          </div>
+          <p>To win you have to <strong>beat the computer</strong> at least two times.<br>
+          scissors cuts paper = ✂️<br>
+          paper wraps rock = 📄<br>
+          rock crushes scissors = 🗿
           </p>
           <div class="how-to">
             <button class="button">Go back</button>

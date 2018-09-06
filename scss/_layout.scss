@@ -5,9 +5,24 @@
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 580px) {
   .container {
-    max-width: 728px;
+    max-width: 580px;
     margin: 0 auto;
+  }
+}
+
+button {
+  border-radius: 3px;
+  background-color: #93ACB1;
+  margin-bottom: 20px;
+  padding: 3px;
+  min-width: 100px;
+  color: #FAFAFA;
+  font-size: 16px;
+  text-transform: uppercase;
+  &.how-to-button {
+    background-color:#B4C4C9 ;
+    border-radius: 5px;
   }
 }

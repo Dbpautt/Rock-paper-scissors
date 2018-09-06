@@ -27,7 +27,6 @@ function Game() {
 Game.prototype.roundScreen = function () { 
   var self = this;
   
-
   self.initialScreen = buildDom(`
     <main class="game container">
       <span class="round">Round`+ self.currentRound +`/`+ self.totalRound +`</span>
@@ -46,7 +45,7 @@ Game.prototype.roundScreen = function () {
     } else {
       clearInterval(counertId);
     }
-  }, 300);
+  }, 1000);
 
 }
 
@@ -178,9 +177,8 @@ Game.prototype.userPick = function (){
   self.cardToPick.addEventListener('click', function(event){
     self.userChoice = event.target.getAttribute('card');
   });
+
 }
-
-
 
 
 
@@ -238,11 +236,11 @@ Game.prototype.displayResult = function () {
   var computerChoiceImage = document.querySelector('img.computer-choice');
   computerChoiceImage.src = './RPS icons/' + self.computerChoice + '2.png'
   
-
   if (self.userChoice){
-  var userChoiceImage = document.querySelector('img.' + self.userChoice);
-  userChoiceImage.src = './RPS icons/' + self.userChoice + '2.png'
+    var userChoiceImage = document.querySelector('img.' + self.userChoice);
+    userChoiceImage.src = './RPS icons/' + self.userChoice + '2.png'
   }
+  
 }
 
 Game.prototype.nextRound = function () {
