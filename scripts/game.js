@@ -160,8 +160,6 @@ Game.prototype.computerPick = function (){
   var self = this;
 
   self.computerChoice = self.cards[Math.floor(Math.random() * self.cards.length)]
-
-  console.log(self.computerChoice)
 }
 
 Game.prototype.userPick = function (counertId){
@@ -185,53 +183,33 @@ Game.prototype.compareChoice = function (){
   if (self.userChoice == 'scissors' && self.computerChoice == 'scissors'){
     self.updateTotalRound();
     self.gameTie();
-
-    console.log('it\'s a tie!');
   } else if (self.userChoice == 'scissors' && self.computerChoice == 'paper'){
     self.updateUserScore();
     self.playerWins();
-
-    console.log('scissors wins');
   } else if (self.userChoice == 'scissors' && self.computerChoice == 'rock'){
     self.updateComputerScore();
     self.pcWins();
-
-    console.log('rock wins');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'rock'){
     self.updateTotalRound();
     self.gameTie();
-
-    console.log('it\'s a tie!');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'paper'){
     self.updateComputerScore();
     self.pcWins();
-
-    console.log('paper wins');
   } else if (self.userChoice == 'rock' && self.computerChoice == 'scissors'){
     self.updateUserScore();
     self.playerWins();
-
-    console.log('rock wins');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'paper'){
     self.updateTotalRound();
     self.gameTie();
-
-    console.log('it\'s a tie!');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'rock'){
     self.updateUserScore();
     self.playerWins();
-
-    console.log('paper wins');
   } else if (self.userChoice == 'paper' && self.computerChoice == 'scissors'){
     self.updateComputerScore();
     self.pcWins();
-
-    console.log('scissors wins');
   } else {
     self.updateComputerScore();
     self.noChoice();
-
-    console.log('too slow you didnt pick ');
   }
 
   document.querySelector('span.timer').remove();

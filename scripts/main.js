@@ -83,7 +83,7 @@ function main() {
       <main class="game container">
         <div class = "splash">
           <h1>How to play</h1>
-          <img src="https://media3.giphy.com/media/Xmbnu0oH3bMEo/giphy.gif" >
+          <img class ="gif" src="https://media3.giphy.com/media/Xmbnu0oH3bMEo/giphy.gif" >
           <p>You play against the computer, and have 2 seconds to pick:</p>
             <div class="icon">
               <img src="./RPS icons/rock2.png" class="icon" width="25%" height="25%">
@@ -165,7 +165,7 @@ function main() {
   function buildWinScreen(game){
 
     winGame = buildDom(`
-      <main class="container">
+      <main class="container game-over">
         <h1>`+ game.username +` you've won!!!</h1>
         <img class="win" src="./RPS icons/winner.gif" >
         <button type="button" class="playAgain">Play again!</button>
@@ -183,7 +183,7 @@ function main() {
     
 
     loseGame = buildDom(`
-      <main class="container">
+      <main class="container game-over">
         <h1>`+ game.username +` you've lost</h1>
         <img class="lose" src="./RPS icons/loser.gif" >
         <button type="button" class="playAgain">Play again!</button>
