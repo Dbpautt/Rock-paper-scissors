@@ -1,6 +1,7 @@
 'use strict';
 
 
+
 function buildDom(html) {
   var div = document.createElement('div');
   div.innerHTML = html;
@@ -8,16 +9,31 @@ function buildDom(html) {
 }
 
 function main() {
-
-
+  
+  var idName = '';
+  
   var splashMain;
   var howToScreen;
   var gameIntro;
+  var loseGame;
+  var winGame;
   var gameOverMain = null ;
   var game = null;
+  
+  
 
   //-- Game Main Splash --//
+
+  
+  
   function buildSplash() {
+   
+    if (loseGame) {
+      destroyLoseScreen();
+    }
+    if (winGame) {
+      destroyWinScreen();
+    }
 
     splashMain = buildDom(`
       <main class="game container">
@@ -25,24 +41,35 @@ function main() {
           <h1>Rock, Paper, Scissors!</h1>
           <label for="name">What's your name?</label>
           <input type="text" placeholder="Edward Scissorhands">
-          <button>Start</button>
+          <button type="button" class="start">Start</button>
           <img class ="gif" src="./RPS icons/rock-paper-scissors.gif">
           </div>
           <div class="how-to">
-            <button class="how-to-button">How to play</button>
+            <button type="button" class="how-to-button">How to play</button>
           </div>
       </main>
     `);
     
     document.body.appendChild(splashMain);
 
-    var button = splashMain.querySelector('button');
+    var button = splashMain.querySelector('button.start');
     button.addEventListener('click', mainGame);
 
     var buttonHowTo = splashMain.querySelector('div.how-to button');
     buttonHowTo.addEventListener('click', splashHowTo);
-  
+   
+    var input = splashMain.querySelector('input');
+
+    input.addEventListener('keyup', function (){
+      idName = username(input)
+    })
+
+    function username(item){
+      return item;
+    }
+
   }
+
 
   function destroySplash() {
     splashMain.remove();
@@ -51,6 +78,7 @@ function main() {
   //-- Splash - How to Play --//
 
   function buildHowTo() {
+
     howToScreen = buildDom(`
       <main class="game container">
         <div class = "splash">
@@ -68,7 +96,7 @@ function main() {
           rock crushes scissors = 🗿
           </p>
           <div class="how-to">
-            <button class="button">Go back</button>
+            <button type="button" class="button">Go back</button>
           </div>
         </div>
       </main>
@@ -78,6 +106,7 @@ function main() {
 
     var goBack = howToScreen.querySelector('div.how-to button');
     goBack.addEventListener('click', returnMain);
+
   }
 
   function splashHowTo() {
@@ -90,6 +119,7 @@ function main() {
   }
   
   function returnMain() {
+
     destroyHowTo();
     buildSplash();
   }
@@ -97,19 +127,85 @@ function main() {
   //-- Game--//
 
   function mainGame() {
-    destroySplash();
-    // destroyGameOver();
 
-    game = new Game();
+    destroySplash();
+    
+    game = new Game(idName, gameOver);
     game.roundScreen();
-    // game.onOver(function () {
-    //   gameOver(game.score);
-    // });
+
+
+
+  }
+
+  function destroyGame() {
+    game.gamePlay.remove();
+  }
+
+
+  // -- Game over--//
+  
+
+
+  function gameOver(game) {
+    destroyGame();
+ 
+    if (game.userScore === 2){
+      buildWinScreen(game); 
+    } else if (game.computerScore === 2 ){
+      buildLoseScreen(game);
+    } else {
+      console.log('whaaaaat?')
+    }
+  }
+
+
+  //  ------- my code -----
+
+
+  function buildWinScreen(game){
+
+    winGame = buildDom(`
+      <main class="container">
+        <h1>`+ game.username +` you've won!!!</h1>
+        <img class="win" src="./RPS icons/winner.gif" >
+        <button type="button" class="playAgain">Play again!</button>
+      </main>
+    `);
+
+    document.body.appendChild(winGame);
+
+    var playAgain = document.querySelector('button.playAgain');
+    playAgain.addEventListener('click', buildSplash)
+
+  }
+
+  function buildLoseScreen(game){
+    
+
+    loseGame = buildDom(`
+      <main class="container">
+        <h1>`+ game.username +` you've lost</h1>
+        <img class="lose" src="./RPS icons/loser.gif" >
+        <button type="button" class="playAgain">Play again!</button>
+      </main>
+    `);
+
+    document.body.appendChild(loseGame);
+
+    var playAgain = document.querySelector('button.playAgain');
+    playAgain.addEventListener('click', buildSplash)
+  }
+
+  function destroyLoseScreen(){
+    loseGame.remove();
+  }
+  
+  function destroyWinScreen(){
+    winGame.remove();
   }
 
   buildSplash();
-
-  
+ 
 }
 
 window.addEventListener('load', main);

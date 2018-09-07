@@ -1,5 +1,5 @@
 
-
+/* ----- Game Main Screen ------ */
 
 article{
   border: 2px solid #265866;
@@ -45,14 +45,15 @@ div {
       width: 25% ;
 
       &:hover{
-        box-shadow: 0px 0px 20px $dark-gray;
+        box-shadow: 0px 0px 20px $dim-gray;
+        opacity: 1;
         border-radius: 50%;
       }
       &.disable{
         opacity: 0.5;
       }
-      .paper{
-        padding-top: 68px;
+      &[card="paper"]{
+        margin-top: 68px;
       }
     }
   }
@@ -78,11 +79,14 @@ span{
 
 }
 
-.pc-scissors {
-  display: block;
-  box-sizing: border-box;
-  background: url(http://akamaicovers.oreilly.com/images/9780596517748/cat.gif) no-repeat;
-  width: 180px;
-  height: 236px;
-  padding-left: 180px;
+img{
+  &.lose{
+    width: 50%;
+    padding-top: 20px;
+    margin-bottom: 30px;
+  }
+  &.win{
+    padding-top: 20px;
+    margin-bottom: 30px;
+  }
 }

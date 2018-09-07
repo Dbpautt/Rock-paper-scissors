@@ -10,6 +10,18 @@ h1 {
   margin-bottom: 10px;
   font-size: 30px;
   color: $Sea-green;
+  text-align: center;
+
+  &.winner{
+    font-size: 22px; 
+    color: white;
+    background-color: rgb(75, 164, 85);
+  }
+  &.loser{
+    color: white;
+    font-size: 22px; 
+    background-color: rgb(196, 82, 82);
+  }
 }
 
 h2 {
@@ -35,15 +47,16 @@ label{
   padding-top: 10px;
   margin-bottom: 8px;
   font-size: 17px;
+  color: $gray;
 }
 
 input{
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 14px;
   text-align: center;
   border-radius: 3px;
   color: #265866;
- 
+  font-weight: 100;
 }
 
 strong{
